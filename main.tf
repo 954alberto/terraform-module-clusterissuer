@@ -12,7 +12,7 @@ data "helm_repository" "repository" {
 resource "helm_release" "release" {
   name      = var.name
   namespace = var.namespace
-  chart     = var.chart
+  chart     = "${var.helm_repository}/${var.name}"
   version   = var.chart_version
   values    = [var.helm_values]
   timeout   = var.helm_timeout
